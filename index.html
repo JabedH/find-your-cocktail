@@ -30,25 +30,33 @@
         </div>
       </nav>
 <!-- welcome -->
-   <div class="container">
-    <div class="d-flex align-items-center ">
+   <div class="container "  id="findCocktail">
+    <div class="d-flex align-items-center " >
         <div class="d-flex justify-content-end mt-5 mb-5" ><img class="w-50" src="img/co.png" alt=""></div>
         <div>
             <h1>Welcome to <br> <span class="fw-bold font-size">Find Your Cocktail</span> </h1>
         </div>
     </div>
+  </div>
 <!-- border --> 
 <div class=" list-group-item border-bottom-0 border-start-0 border-end-0 pb-4"> </div>
 <!-- search anything -->
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center position">
         <div class="input-group mb-4 w-50">
-            <input type="text" class="form-control" placeholder="Search Your Cooktail" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            <input type="text" class="form-control" id="inputValue" placeholder="Search Your Cocktail" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button onclick="searchCocktail()" class="btn btn-outline-secondary" type="button" id="searchBtn">Search</button>
+            
         </div>
+        <h5 class="text-center mt-5" id="warningId" ></h5>
     </div>
-    </div>
+    
 <!-- items -->
-    <h3 class="text-center mb-4">Popular Drinks</h3>
+   <div class="container">
+    <div class=" row d-flex justify-content-center " id="newCocktail">
+     </div>
+   </div>
+<!-- items -->
+    <h3 class="text-center mb-4 mt-3">Popular Drinks</h3>
    <div class="container">
     <div class=" row d-flex justify-content-center " id="addRandom" >
      </div>

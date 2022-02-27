@@ -5,7 +5,14 @@
 #logo-color{
     color: #FF9600;
 }
-.main-border{
+.position{
+    position: relative;
+}
+/* .main-border
     ha
-    /* border: 1px 0 0 0 solid #ccc; */
+    border: 1px 0 0 0 solid #ccc; */
+#warningId{
+    color: red;
+    position: absolute;
+    
 }
