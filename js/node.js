@@ -61,24 +61,21 @@ const searchCocktail =() =>{
         .then(res => res.json())
         .then(data => displayCocktail(data.drinks))
     }
-    if(onclick="searchCocktail()"){
-        document.getElementById('spinner').style.display = 'block'
-    }
     const displayCocktail = allCocktail =>{
+        if(onclick="searchCocktail()"){
+            document.getElementById('spinner').style.display = 'block'
+        }
     const newCocktail = document.getElementById('newCocktail')
     newCocktail.innerHTML = ''
     allCocktail?.forEach(cocktail => {
         console.log(cocktail)
         const div2 = document.createElement('div')
-        div2.classList.add('card')
-        div2.classList.add('col-md-3')
-        div2.classList.add('border-0')
-        div2.classList.add('text-center','mb-5')
+        div2.classList.add('text-center','mb-5','border-0','col-md-3','card')
         div2.innerHTML = 
     ` <img src="${cocktail.strDrinkThumb}" class="card-img-top" alt="...">
         <div class="card-body">
          <h5 class="card-title text-center mb-3">${cocktail.strDrink}</h5>
-         <a href="#" class=" text-center btn btn-primary ">More Details</a>
+         <a href="#" onclick="loadCocktail(${cocktail.idDrink})" class=" text-center btn btn-primary ">More Details</a>
         </div>
     `
     newCocktail.appendChild(div2)
@@ -90,6 +87,26 @@ const searchCocktail =() =>{
     }
     })
     }
+}
+const loadCocktail = cocktailId =>{
+    console.log(cocktailId)
     
-
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
+    .then(res => res.json())
+    .then(data => newLoadCocktail(data.drinks[0]))
+}
+const newLoadCocktail = cocktailDetails =>{
+    const addCocktailId = document.getElementById('cocktailNewId')
+    addCocktailId.innerHTML =''
+    const div3 = document.createElement('div')
+    div3.classList.add('text-center','mb-5','border-0','col-md-4','card')
+    div3.innerHTML = 
+    `<div class="card mb-3">
+    <img src="${cocktailDetails.strDrinkThumb}" style="height: 12rem;" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${cocktailDetails.strDrink}</h5>
+      <p class="card-text">${cocktailDetails.strInstructions.slice(0, 200)}</p>
+    </div>
+  </div>`
+    addCocktailId.appendChild(div3)
 }
