@@ -21,6 +21,7 @@ const getRandomApi = (getObjects)=>{
     })
     
 }
+
 const nonAlcoholic =() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic')
     .then(res => res.json())
@@ -49,6 +50,7 @@ const getNonAlcoholic = (NonAlcoholicObj) =>{
 const searchCocktail =() =>{
     const searchField = document.getElementById('inputValue')
     const searchValue = searchField.value
+    searchField.value = ''
     console.log(searchValue)
     const error = document.getElementById('warningId')
     if(!isNaN(searchValue)|| searchValue == "" ){
@@ -59,23 +61,32 @@ const searchCocktail =() =>{
         .then(res => res.json())
         .then(data => displayCocktail(data.drinks))
     }
+    if(onclick="searchCocktail()"){
+        document.getElementById('spinner').style.display = 'block'
+    }
     const displayCocktail = allCocktail =>{
     const newCocktail = document.getElementById('newCocktail')
-    allCocktail.forEach(cocktail => {
+    newCocktail.innerHTML = ''
+    allCocktail?.forEach(cocktail => {
         console.log(cocktail)
         const div2 = document.createElement('div')
         div2.classList.add('card')
         div2.classList.add('col-md-3')
         div2.classList.add('border-0')
+        div2.classList.add('text-center','mb-5')
         div2.innerHTML = 
     ` <img src="${cocktail.strDrinkThumb}" class="card-img-top" alt="...">
         <div class="card-body">
-         <h5 class="card-title text-center ">${cocktail.strDrink}</h5>
+         <h5 class="card-title text-center mb-3">${cocktail.strDrink}</h5>
+         <a href="#" class=" text-center btn btn-primary ">More Details</a>
         </div>
     `
     newCocktail.appendChild(div2)
     if(onclick="searchCocktail()"){
         document.getElementById('findCocktail').style.display = 'none'
+        document.getElementById('popularId').style.display = 'none'
+        document.getElementById('latestId').style.display = 'none'
+        document.getElementById('spinner').style.display = 'none'
     }
     })
     }
