@@ -14,8 +14,13 @@
 #warningId{
     color: red;
     position: absolute;
-    
+    margin-top: 45px;
+    font-size: 15px;
 }
 #spinner{
     display: none;
+}
+.footerText{
+    padding: 20px 0;
+    margin-bottom: 0;
 }
